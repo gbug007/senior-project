@@ -42,7 +42,6 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="BatteryCasing" type="Sprite2D" parent="."]
 position = Vector2(-64, 9.53674e-07)
-scale = Vector2(1, 1)
 texture = ExtResource("4_wk3tv")
 
 [connection signal="body_entered" from="ComponentArea" to="." method="_on_component_area_body_entered"]
