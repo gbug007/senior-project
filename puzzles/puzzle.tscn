@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=4 uid="uid://d0go8uixvh2rt"]
+
+[ext_resource type="Script" uid="uid://cc1b7isohhem7" path="res://puzzles/puzzle.gd" id="1_3rpex"]
+[ext_resource type="PackedScene" uid="uid://djwgkhfeh4vls" path="res://circuits/circuit.tscn" id="2_sgyri"]
+[ext_resource type="PackedScene" uid="uid://f5njeav0vr0k" path="res://button.tscn" id="3_uavuq"]
+[ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="4_6vuq3"]
+[ext_resource type="PackedScene" uid="uid://cci5uf5ikh0rn" path="res://resistor.tscn" id="5_7jknn"]
+[ext_resource type="PackedScene" uid="uid://c802a6rkdua0b" path="res://area_exit.tscn" id="6_yx1dm"]
+[ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://level/tileset.tres" id="7_3rpex"]
+[ext_resource type="PackedScene" uid="uid://cw6nldo3rjyyq" path="res://level/background/parallax_background.tscn" id="8_sgyri"]
+
+[node name="Puzzle" type="Node2D"]
+script = ExtResource("1_3rpex")
+
+[node name="Circuit" parent="." instance=ExtResource("2_sgyri")]
+position = Vector2(616, 376)
+
+[node name="Button" parent="." instance=ExtResource("3_uavuq")]
+position = Vector2(440, 432)
+
+[node name="Player" parent="." instance=ExtResource("4_6vuq3")]
+position = Vector2(208, 312)
+metadata/_edit_group_ = true
+
+[node name="ButtonTimer" type="Timer" parent="."]
+
+[node name="Resistor" parent="." groups=["components"] instance=ExtResource("5_7jknn")]
+position = Vector2(240, 16)
+contact_monitor = true
+
+[node name="AreaExit" parent="." instance=ExtResource("6_yx1dm")]
+position = Vector2(720, 376)
+monitoring = false
+
+[node name="IntroText" type="RichTextLabel" parent="."]
+offset_left = 264.0
+offset_top = 288.0
+offset_right = 544.0
+offset_bottom = 384.0
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "To turn on the portal you need to connect the resistor to the circuit and activate power with the button."
+
+[node name="ExitText" type="RichTextLabel" parent="."]
+offset_left = 768.0
+offset_top = 352.0
+offset_right = 1048.0
+offset_bottom = 416.0
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Congrats! Step through the portal by tapping E"
+
+[node name="Layer0" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD9/wcAAAABAAIAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAD9/wgAAAAAAAEAAAD+/wgAAAAAAAEAAAD//wgAAAAAAAEAAAAAAAgAAAAAAAEAAAABAAgAAAAAAAEAAAACAAgAAAAAAAEAAAADAAgAAAAAAAEAAAAEAAgAAAAAAAEAAAAFAAgAAAAAAAEAAAAGAAgAAAAAAAEAAAAHAAgAAAAAAAEAAAAIAAgAAAAAAAEAAAD9/wYAAAABAAEAAAD9/wUAAAABAAEAAAD9/wMAAAABAAEAAAAJAAgAAAAAAAEAAAAKAAgAAAAAAAEAAAALAAgAAAAAAAEAAAAMAAgAAAAAAAEAAAANAAgAAAAAAAEAAAAOAAgAAAAAAAEAAAAPAAgAAAAAAAEAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAD9/wIAAAABAAEAAAD9/wEAAAABAAEAAAD9/wAAAAABAAEAAAD9////AAABAAEAAAD9//7/AAABAAEAAAD9//3/AAABAAEAAAD9//z/AAABAAEAAAD9//v/AAABAAEAAAD9//r/AAABAAEAAAD9//n/AAABAAAAAAAQAAcAAAAAAAAAAAARAAcAAAAAAAAAAAASAAcAAAAAAAAAAAATAAcAAAAAAAAAAAAUAAcAAAAAAAAAAAAVAAcAAAAAAAAAAAAWAAcAAAAAAAAAAAAXAAcAAAAAAAAAAAAYAAcAAAABAAIAABAQAAgAAAAAAAEAAAARAAgAAAAAAAEAAAASAAgAAAAAAAEAAAATAAgAAAAAAAEAAAAUAAgAAAAAAAEAAAAVAAgAAAAAAAEAAAAWAAgAAAAAAAEAAAAXAAgAAAAAAAEAAAAYAAgAAAAAAAEAAAAYAAkAAAAAAAEAAAAXAAkAAAAAAAEAAAAWAAkAAAAAAAEAAAAVAAkAAAAAAAEAAAAUAAoAAAAAAAEAAAATAAoAAAAAAAEAAAATAAsAAAAAAAEAAAASAAsAAAAAAAEAAAARAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAMAAsAAAAAAAEAAAALAAsAAAAAAAEAAAALAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAANAAoAAAAAAAEAAAAOAAoAAAAAAAEAAAAPAAoAAAAAAAEAAAAQAAoAAAAAAAEAAAARAAoAAAAAAAEAAAASAAoAAAAAAAEAAAAUAAkAAAAAAAEAAAATAAkAAAAAAAEAAAASAAkAAAAAAAEAAAARAAkAAAAAAAEAAAAQAAkAAAAAAAEAAAAPAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAANAAkAAAAAAAEAAAAMAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAKAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAEAAkAAAAAAAEAAAADAAkAAAAAAAEAAAACAAkAAAAAAAEAAAABAAkAAAAAAAEAAAAAAAkAAAAAAAEAAAD9/wkAAAAAAAEAAAD+/wkAAAAAAAEAAAD//wkAAAAAAAEAAAD9/woAAAAAAAEAAAD9/wsAAAAAAAEAAAD+/wsAAAAAAAEAAAD//wsAAAAAAAEAAAAAAAsAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAsAAAAAAAEAAAAGAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAIAAsAAAAAAAEAAAAJAAsAAAAAAAEAAAAKAAsAAAAAAAEAAAAIAAoAAAAAAAEAAAAHAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAFAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAADAAoAAAAAAAEAAAACAAoAAAAAAAEAAAABAAoAAAAAAAEAAAAAAAoAAAAAAAEAAAD//woAAAAAAAEAAAD+/woAAAAAAAEAAAAUAAsAAAAAAAEAAAAVAAsAAAAAAAEAAAAWAAsAAAAAAAEAAAAXAAsAAAAAAAEAAAAYAAsAAAAAAAEAAAAYAAoAAAAAAAEAAAAXAAoAAAAAAAEAAAAWAAoAAAAAAAEAAAAVAAoAAAAAAAEAAAAYAAYAAAABAAEAABAYAAUAAAABAAEAABAYAAQAAAABAAEAABAYAAMAAAABAAEAABAYAAIAAAABAAEAABAYAAEAAAABAAEAABAYAAAAAAABAAEAABAYAP//AAABAAEAABAYAP7/AAABAAEAABAYAP3/AAABAAEAABAYAPz/AAABAAEAABAYAPv/AAABAAEAABAYAPr/AAABAAEAABAYAPn/AAABAAAAABD9/wQAAAABAAEAAAD8/wsAAAAAAAEAAAD7/wsAAAAAAAEAAAD6/wsAAAAAAAEAAAD5/wsAAAAAAAEAAAD5/woAAAAAAAEAAAD5/wkAAAAAAAEAAAD5/wgAAAAAAAEAAAD5/wcAAAAAAAEAAAD5/wYAAAAAAAEAAAD5/wUAAAAAAAEAAAD5/wQAAAAAAAEAAAD5/wMAAAAAAAEAAAD5/wIAAAAAAAEAAAD5/wEAAAAAAAEAAAD5/wAAAAAAAAEAAAD5////AAAAAAEAAAD5//7/AAAAAAEAAAD5//3/AAAAAAEAAAD5//z/AAAAAAEAAAD5//v/AAAAAAEAAAD5//r/AAAAAAEAAAD6//r/AAAAAAEAAAD7//r/AAAAAAEAAAD8//r/AAAAAAEAAAD8//v/AAAAAAEAAAD8//z/AAAAAAEAAAD8//3/AAAAAAEAAAD8//7/AAAAAAEAAAD8////AAAAAAEAAAD8/wAAAAAAAAEAAAD8/wEAAAAAAAEAAAD8/wIAAAAAAAEAAAD8/wMAAAAAAAEAAAD8/wQAAAAAAAEAAAD7/wMAAAAAAAEAAAD7/wIAAAAAAAEAAAD7/wEAAAAAAAEAAAD7/wAAAAAAAAEAAAD7////AAAAAAEAAAD7//7/AAAAAAEAAAD6//7/AAAAAAEAAAD6//3/AAAAAAEAAAD6//z/AAAAAAEAAAD6//v/AAAAAAEAAAD7//v/AAAAAAEAAAD7//z/AAAAAAEAAAD7//3/AAAAAAEAAAD6////AAAAAAEAAAD6/wAAAAAAAAEAAAD6/wMAAAAAAAEAAAD6/wQAAAAAAAEAAAD6/wIAAAAAAAEAAAD6/wEAAAAAAAEAAAD7/wQAAAAAAAEAAAD7/wUAAAAAAAEAAAD8/wUAAAAAAAEAAAD8/wYAAAAAAAEAAAD8/wcAAAAAAAEAAAD8/wgAAAAAAAEAAAD8/wkAAAAAAAEAAAD8/woAAAAAAAEAAAD7/woAAAAAAAEAAAD6/wkAAAAAAAEAAAD6/wgAAAAAAAEAAAD7/wcAAAAAAAEAAAD7/wYAAAAAAAEAAAD7/wgAAAAAAAEAAAD7/wkAAAAAAAEAAAD6/woAAAAAAAEAAAD6/wUAAAAAAAEAAAD6/wYAAAAAAAEAAAD6/wcAAAAAAAEAAAD8//n/AAAAAAAAAAD7//n/AAAAAAAAAAD6//n/AAAAAAAAAAD5//n/AAAAAAAAAAD//wQAAAACAAAAAAAAAAQAAAACAAAAAAABAAQAAAACAAAAAAACAAQAAAADAAAAAAD+/wQAAAADAAAAABACAAEAAAACAAAAAAADAAEAAAACAAAAAAAEAAEAAAACAAAAAAAFAAEAAAADAAAAAAABAAEAAAADAAAAABA=")
+tile_set = ExtResource("7_3rpex")
+rendering_quadrant_size = 32
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("8_sgyri")]
+
+[connection signal="resistor_interact" from="." to="." method="_on_resistor_interact"]
+[connection signal="body_entered" from="Button" to="." method="_on_button_body_entered"]
+[connection signal="body_exited" from="Button" to="." method="_on_button_body_exited"]
+[connection signal="timeout" from="ButtonTimer" to="." method="_on_button_timer_timeout"]
+[connection signal="body_entered" from="AreaExit" to="." method="_on_area_exit_body_entered"]
+[connection signal="body_exited" from="AreaExit" to="." method="_on_area_exit_body_exited"]
+
+[editable path="Player"]

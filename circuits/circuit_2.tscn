@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://fng568iqxtrt"]
+
+[ext_resource type="Script" uid="uid://d3f5co16bek1w" path="res://circuits/circuit_2.gd" id="1_62whn"]
+[ext_resource type="PackedScene" uid="uid://ct7rcqnv2qr10" path="res://voltage_source.tscn" id="2_hspkn"]
+[ext_resource type="Texture2D" uid="uid://js8iocwc0tm2" path="res://circuit_art/circle.png" id="3_rxff6"]
+[ext_resource type="Texture2D" uid="uid://dda6ak0aw3cdp" path="res://circuit_art/BatteryCasing.png" id="4_4i5c7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hspkn"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxff6"]
+size = Vector2(64, 32.0002)
+
+[node name="Circuit2" type="Node2D"]
+script = ExtResource("1_62whn")
+
+[node name="VoltageSource" parent="." instance=ExtResource("2_hspkn")]
+visible = false
+position = Vector2(-64, 0)
+
+[node name="ComponentArea0" type="Area2D" parent="."]
+position = Vector2(0, -56)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentArea0"]
+shape = SubResource("RectangleShape2D_hspkn")
+
+[node name="ComponentArea1" type="Area2D" parent="."]
+position = Vector2(96, -56)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentArea1"]
+position = Vector2(0, -1.55745e-06)
+shape = SubResource("RectangleShape2D_rxff6")
+
+[node name="Wire" type="Line2D" parent="."]
+position = Vector2(-235, -191)
+points = PackedVector2Array(267, 135, 299, 135)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Wire3" type="Line2D" parent="."]
+position = Vector2(-235, -191)
+points = PackedVector2Array(171, 167, 171, 135, 203, 135)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Wire2" type="Line2D" parent="."]
+position = Vector2(62.6844, 15.5487)
+points = PackedVector2Array(65.3156, -71.5487, 89.3156, -71.5487, 89.3156, 40.4513, -126.684, 40.4513, -126.684, 8.4513)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(152, 8)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_rxff6")
+
+[node name="BatteryCasing" type="Sprite2D" parent="."]
+position = Vector2(-64, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("4_4i5c7")
+
+[connection signal="body_entered" from="ComponentArea0" to="." method="_on_component_area_0_body_entered"]
+[connection signal="body_exited" from="ComponentArea0" to="." method="_on_component_area_0_body_exited"]
+[connection signal="body_entered" from="ComponentArea1" to="." method="_on_component_area_1_body_entered"]
+[connection signal="body_exited" from="ComponentArea1" to="." method="_on_component_area_1_body_exited"]

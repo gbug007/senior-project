@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=4 uid="uid://dxxppjxpm21gp"]
+
+[ext_resource type="Script" uid="uid://dqj5mf7bwu201" path="res://puzzles/puzzle_1.gd" id="1_b5uka"]
+[ext_resource type="PackedScene" uid="uid://68e0rpoijnnj" path="res://circuits/circuit_1.tscn" id="2_gq4sf"]
+[ext_resource type="PackedScene" uid="uid://f5njeav0vr0k" path="res://button.tscn" id="3_mxefb"]
+[ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="4_vsr5n"]
+[ext_resource type="PackedScene" uid="uid://c802a6rkdua0b" path="res://area_exit.tscn" id="5_23ewh"]
+[ext_resource type="PackedScene" uid="uid://cci5uf5ikh0rn" path="res://resistor.tscn" id="6_s64de"]
+[ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://level/tileset.tres" id="7_mxefb"]
+[ext_resource type="PackedScene" uid="uid://cw6nldo3rjyyq" path="res://level/background/parallax_background.tscn" id="8_vsr5n"]
+
+[node name="Puzzle1" type="Node2D"]
+script = ExtResource("1_b5uka")
+
+[node name="Circuit1" parent="." instance=ExtResource("2_gq4sf")]
+position = Vector2(648, 360)
+
+[node name="Button" parent="." instance=ExtResource("3_mxefb")]
+position = Vector2(288, 432)
+
+[node name="Player" parent="." instance=ExtResource("4_vsr5n")]
+position = Vector2(176, 300)
+metadata/_edit_group_ = true
+
+[node name="ButtonTimer" type="Timer" parent="."]
+
+[node name="AreaExit" parent="." instance=ExtResource("5_23ewh")]
+position = Vector2(760, 416)
+monitoring = false
+
+[node name="Resistor" parent="." instance=ExtResource("6_s64de")]
+position = Vector2(944, 16)
+
+[node name="Resistor2" parent="." instance=ExtResource("6_s64de")]
+position = Vector2(216, 24)
+
+[node name="IntroText" type="RichTextLabel" parent="."]
+offset_left = 256.0
+offset_top = 344.0
+offset_right = 536.0
+offset_bottom = 384.0
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Now you have two resistors to find."
+
+[node name="ExitText" type="RichTextLabel" parent="."]
+offset_left = 768.0
+offset_top = 240.0
+offset_right = 1048.0
+offset_bottom = 344.0
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "You don't actually need the top resistor (feel free to remove it)! No current flows through it because it's parallel with a short (a wire!)"
+
+[node name="Layer0" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD9/wcAAAABAAIAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAD9/wgAAAAAAAEAAAD+/wgAAAAAAAEAAAD//wgAAAAAAAEAAAAAAAgAAAAAAAEAAAABAAgAAAAAAAEAAAACAAgAAAAAAAEAAAADAAgAAAAAAAEAAAAEAAgAAAAAAAEAAAAFAAgAAAAAAAEAAAAGAAgAAAAAAAEAAAAHAAgAAAAAAAEAAAAIAAgAAAAAAAEAAAD9/wYAAAABAAEAAAD9/wUAAAABAAEAAAD9/wMAAAABAAEAAAAJAAgAAAAAAAEAAAAKAAgAAAAAAAEAAAALAAgAAAAAAAEAAAAMAAgAAAAAAAEAAAANAAgAAAAAAAEAAAAOAAgAAAAAAAEAAAAPAAgAAAAAAAEAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAD9/wIAAAABAAEAAAD9/wEAAAABAAEAAAD9/wAAAAABAAEAAAD9////AAABAAEAAAD9//7/AAABAAEAAAD9//3/AAABAAEAAAD9//z/AAABAAEAAAD9//v/AAABAAEAAAD9//r/AAABAAEAAAD9//n/AAABAAAAAAAQAAcAAAAAAAAAAAARAAcAAAAAAAAAAAASAAcAAAAAAAAAAAATAAcAAAAAAAAAAAAUAAcAAAAAAAAAAAAVAAcAAAAAAAAAAAAWAAcAAAAAAAAAAAAXAAcAAAAAAAAAAAAYAAcAAAABAAIAABAQAAgAAAAAAAEAAAARAAgAAAAAAAEAAAASAAgAAAAAAAEAAAATAAgAAAAAAAEAAAAUAAgAAAAAAAEAAAAVAAgAAAAAAAEAAAAWAAgAAAAAAAEAAAAXAAgAAAAAAAEAAAAYAAgAAAAAAAEAAAAYAAkAAAAAAAEAAAAXAAkAAAAAAAEAAAAWAAkAAAAAAAEAAAAVAAkAAAAAAAEAAAAUAAoAAAAAAAEAAAATAAoAAAAAAAEAAAATAAsAAAAAAAEAAAASAAsAAAAAAAEAAAARAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAMAAsAAAAAAAEAAAALAAsAAAAAAAEAAAALAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAANAAoAAAAAAAEAAAAOAAoAAAAAAAEAAAAPAAoAAAAAAAEAAAAQAAoAAAAAAAEAAAARAAoAAAAAAAEAAAASAAoAAAAAAAEAAAAUAAkAAAAAAAEAAAATAAkAAAAAAAEAAAASAAkAAAAAAAEAAAARAAkAAAAAAAEAAAAQAAkAAAAAAAEAAAAPAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAANAAkAAAAAAAEAAAAMAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAKAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAEAAkAAAAAAAEAAAADAAkAAAAAAAEAAAACAAkAAAAAAAEAAAABAAkAAAAAAAEAAAAAAAkAAAAAAAEAAAD9/wkAAAAAAAEAAAD+/wkAAAAAAAEAAAD//wkAAAAAAAEAAAD9/woAAAAAAAEAAAD9/wsAAAAAAAEAAAD+/wsAAAAAAAEAAAD//wsAAAAAAAEAAAAAAAsAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAsAAAAAAAEAAAAGAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAIAAsAAAAAAAEAAAAJAAsAAAAAAAEAAAAKAAsAAAAAAAEAAAAIAAoAAAAAAAEAAAAHAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAFAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAADAAoAAAAAAAEAAAACAAoAAAAAAAEAAAABAAoAAAAAAAEAAAAAAAoAAAAAAAEAAAD//woAAAAAAAEAAAD+/woAAAAAAAEAAAAUAAsAAAAAAAEAAAAVAAsAAAAAAAEAAAAWAAsAAAAAAAEAAAAXAAsAAAAAAAEAAAAYAAsAAAAAAAEAAAAYAAoAAAAAAAEAAAAXAAoAAAAAAAEAAAAWAAoAAAAAAAEAAAAVAAoAAAAAAAEAAAAYAAYAAAABAAEAABAYAAUAAAABAAEAABAYAAQAAAABAAEAABAYAAMAAAABAAEAABAYAAIAAAABAAEAABAYAAEAAAABAAEAABAYAAAAAAABAAEAABAYAP//AAABAAEAABAYAP7/AAABAAEAABAYAP3/AAABAAEAABAYAPz/AAABAAEAABAYAPv/AAABAAEAABAYAPr/AAABAAEAABAYAPn/AAABAAAAABD9/wQAAAABAAEAAAD8/wsAAAAAAAEAAAD7/wsAAAAAAAEAAAD6/wsAAAAAAAEAAAD5/wsAAAAAAAEAAAD5/woAAAAAAAEAAAD5/wkAAAAAAAEAAAD5/wgAAAAAAAEAAAD5/wcAAAAAAAEAAAD5/wYAAAAAAAEAAAD5/wUAAAAAAAEAAAD5/wQAAAAAAAEAAAD5/wMAAAAAAAEAAAD5/wIAAAAAAAEAAAD5/wEAAAAAAAEAAAD5/wAAAAAAAAEAAAD5////AAAAAAEAAAD5//7/AAAAAAEAAAD5//3/AAAAAAEAAAD5//z/AAAAAAEAAAD5//v/AAAAAAEAAAD5//r/AAAAAAEAAAD6//r/AAAAAAEAAAD7//r/AAAAAAEAAAD8//r/AAAAAAEAAAD8//v/AAAAAAEAAAD8//z/AAAAAAEAAAD8//3/AAAAAAEAAAD8//7/AAAAAAEAAAD8////AAAAAAEAAAD8/wAAAAAAAAEAAAD8/wEAAAAAAAEAAAD8/wIAAAAAAAEAAAD8/wMAAAAAAAEAAAD8/wQAAAAAAAEAAAD7/wMAAAAAAAEAAAD7/wIAAAAAAAEAAAD7/wEAAAAAAAEAAAD7/wAAAAAAAAEAAAD7////AAAAAAEAAAD7//7/AAAAAAEAAAD6//7/AAAAAAEAAAD6//3/AAAAAAEAAAD6//z/AAAAAAEAAAD6//v/AAAAAAEAAAD7//v/AAAAAAEAAAD7//z/AAAAAAEAAAD7//3/AAAAAAEAAAD6////AAAAAAEAAAD6/wAAAAAAAAEAAAD6/wMAAAAAAAEAAAD6/wQAAAAAAAEAAAD6/wIAAAAAAAEAAAD6/wEAAAAAAAEAAAD7/wQAAAAAAAEAAAD7/wUAAAAAAAEAAAD8/wUAAAAAAAEAAAD8/wYAAAAAAAEAAAD8/wcAAAAAAAEAAAD8/wgAAAAAAAEAAAD8/wkAAAAAAAEAAAD8/woAAAAAAAEAAAD7/woAAAAAAAEAAAD6/wkAAAAAAAEAAAD6/wgAAAAAAAEAAAD7/wcAAAAAAAEAAAD7/wYAAAAAAAEAAAD7/wgAAAAAAAEAAAD7/wkAAAAAAAEAAAD6/woAAAAAAAEAAAD6/wUAAAAAAAEAAAD6/wYAAAAAAAEAAAD6/wcAAAAAAAEAAAD8//n/AAAAAAAAAAD7//n/AAAAAAAAAAD6//n/AAAAAAAAAAD5//n/AAAAAAAAAAD//wQAAAACAAAAAAAAAAQAAAACAAAAAAABAAQAAAACAAAAAAACAAQAAAADAAAAAAD+/wQAAAADAAAAABACAAEAAAACAAAAAAADAAEAAAACAAAAAAAEAAEAAAACAAAAAAAFAAEAAAADAAAAAAABAAEAAAADAAAAABASAAQAAAACAAAAAAATAAQAAAACAAAAAAAUAAQAAAADAAAAAAARAAQAAAADAAAAABAOAAEAAAACAAAAAAAPAAEAAAACAAAAAAAQAAEAAAADAAAAAAANAAEAAAADAAAAABA=")
+tile_set = ExtResource("7_mxefb")
+rendering_quadrant_size = 32
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("8_vsr5n")]
+
+[connection signal="resistor_interact" from="." to="." method="_on_resistor_interact"]
+[connection signal="body_entered" from="Button" to="." method="_on_button_body_entered"]
+[connection signal="body_exited" from="Button" to="." method="_on_button_body_exited"]
+[connection signal="timeout" from="ButtonTimer" to="." method="_on_button_timer_timeout"]
+[connection signal="body_entered" from="AreaExit" to="." method="_on_area_exit_body_entered"]
+[connection signal="body_exited" from="AreaExit" to="." method="_on_area_exit_body_exited"]
+
+[editable path="Player"]

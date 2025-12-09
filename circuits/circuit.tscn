@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://djwgkhfeh4vls"]
+
+[ext_resource type="Script" uid="uid://bsf8xbo47aw12" path="res://circuits/circuit.gd" id="1_450v8"]
+[ext_resource type="PackedScene" uid="uid://ct7rcqnv2qr10" path="res://voltage_source.tscn" id="2_3qkyw"]
+[ext_resource type="Texture2D" uid="uid://js8iocwc0tm2" path="res://circuit_art/circle.png" id="3_us5ip"]
+[ext_resource type="Texture2D" uid="uid://dda6ak0aw3cdp" path="res://circuit_art/BatteryCasing.png" id="4_wk3tv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vum0e"]
+size = Vector2(64, 32)
+
+[node name="Circuit" type="Node2D"]
+script = ExtResource("1_450v8")
+
+[node name="ComponentArea" type="Area2D" parent="."]
+position = Vector2(0, -56)
+collision_layer = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentArea"]
+shape = SubResource("RectangleShape2D_vum0e")
+
+[node name="VoltageSource" parent="." instance=ExtResource("2_3qkyw")]
+visible = false
+position = Vector2(-64, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(104, 3.8147e-06)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_us5ip")
+
+[node name="Wire" type="Line2D" parent="."]
+z_index = -1
+position = Vector2(-235, -191)
+points = PackedVector2Array(171, 167, 171, 135, 203, 135)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Wire2" type="Line2D" parent="."]
+z_index = -1
+position = Vector2(-235, -191)
+points = PackedVector2Array(267, 135, 299, 135, 339, 183, 339, 199, 299, 247, 171, 247, 171, 215)
+default_color = Color(0, 0, 0, 1)
+
+[node name="BatteryCasing" type="Sprite2D" parent="."]
+position = Vector2(-64, 9.53674e-07)
+scale = Vector2(1, 1)
+texture = ExtResource("4_wk3tv")
+
+[connection signal="body_entered" from="ComponentArea" to="." method="_on_component_area_body_entered"]
+[connection signal="body_exited" from="ComponentArea" to="." method="_on_component_area_body_exited"]

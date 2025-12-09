@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://cci5uf5ikh0rn"]
+
+[ext_resource type="Script" uid="uid://bl06emik0qjl7" path="res://resistor.gd" id="1_anlt7"]
+[ext_resource type="Texture2D" uid="uid://bls274yfoe77q" path="res://circuit_art/Resistor.png" id="2_j3p18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3p18"]
+size = Vector2(53.3333, 19.2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anlt7"]
+size = Vector2(64, 16)
+
+[sub_resource type="Theme" id="Theme_j3p18"]
+default_font_size = 12
+
+[node name="Resistor" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 56
+script = ExtResource("1_anlt7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.43051e-06, 0)
+scale = Vector2(1.14286, 1)
+texture = ExtResource("2_j3p18")
+
+[node name="ResistorPickupTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.5, 2.5)
+shape = SubResource("RectangleShape2D_j3p18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_anlt7")
+
+[node name="Point1" type="Node2D" parent="."]
+position = Vector2(-32, 0)
+
+[node name="Point2" type="Node2D" parent="."]
+position = Vector2(32, 0)
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 9.0
+theme = SubResource("Theme_j3p18")
+text = "200"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[connection signal="timeout" from="ResistorPickupTimer" to="." method="_on_resistor_pickup_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

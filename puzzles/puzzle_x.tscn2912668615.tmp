@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://v2a0fy88aymr"]
+
+[ext_resource type="Script" uid="uid://dctk6come8ek2" path="res://puzzles/puzzle_x.gd" id="1_gshn5"]
+[ext_resource type="PackedScene" uid="uid://dx2drytd8dnq3" path="res://circuits/circuit_x.tscn" id="2_ggmcd"]
+[ext_resource type="PackedScene" uid="uid://f5njeav0vr0k" path="res://button.tscn" id="3_esv01"]
+[ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="4_fyll5"]
+[ext_resource type="PackedScene" uid="uid://cci5uf5ikh0rn" path="res://resistor.tscn" id="5_fyll5"]
+[ext_resource type="PackedScene" uid="uid://c802a6rkdua0b" path="res://area_exit.tscn" id="6_kctqs"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kctqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7bpy"]
+size = Vector2(1091, 58)
+
+[node name="PuzzleX" type="Node2D"]
+script = ExtResource("1_gshn5")
+
+[node name="CircuitX" parent="." instance=ExtResource("2_ggmcd")]
+position = Vector2(448, 336)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(128, 432)
+collision_layer = 16
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(234.5, 11.125)
+scale = Vector2(1087, 57.75)
+texture = SubResource("PlaceholderTexture2D_kctqs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(233.5, 11)
+shape = SubResource("RectangleShape2D_q7bpy")
+
+[node name="Button" parent="." instance=ExtResource("3_esv01")]
+position = Vector2(120, 376)
+
+[node name="Player" parent="." instance=ExtResource("4_fyll5")]
+position = Vector2(216, 392)
+metadata/_edit_group_ = true
+
+[node name="ButtonTimer" type="Timer" parent="."]
+
+[node name="Resistor" parent="." instance=ExtResource("5_fyll5")]
+position = Vector2(24, 376)
+resistance_ohms = 220
+
+[node name="AreaExit" parent="." instance=ExtResource("6_kctqs")]
+visible = false
+position = Vector2(472, 336)
+monitoring = false
+
+[node name="Text" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -24.0
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 320.0
+text = "To turn on the portal you need to connect the resistor to the circuit."
+
+[connection signal="resistor_interact" from="." to="." method="_on_resistor_interact"]
+[connection signal="body_entered" from="Button" to="." method="_on_button_body_entered"]
+[connection signal="body_exited" from="Button" to="." method="_on_button_body_exited"]
+[connection signal="timeout" from="ButtonTimer" to="." method="_on_button_timer_timeout"]
+[connection signal="body_entered" from="AreaExit" to="." method="_on_area_exit_body_entered"]
+[connection signal="body_exited" from="AreaExit" to="." method="_on_area_exit_body_exited"]
+
+[editable path="Player"]

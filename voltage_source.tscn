@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct7rcqnv2qr10"]
+
+[ext_resource type="Texture2D" uid="uid://bqo3tarxwm57r" path="res://circuit_art/Battery.png" id="1_we5mf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62whn"]
+size = Vector2(48, 80)
+
+[node name="VoltageSource" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_62whn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-3.57628e-07, 1.43051e-06)
+scale = Vector2(1, 1)
+texture = ExtResource("1_we5mf")
+
+[node name="Point1" type="Node2D" parent="."]
+position = Vector2(0, -24)
+
+[node name="Point2" type="Node2D" parent="."]
+position = Vector2(0, 24)

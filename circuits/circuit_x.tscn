@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx2drytd8dnq3"]
+
+[ext_resource type="Script" uid="uid://dlk2k0iqnuq27" path="res://circuits/circuit_x.gd" id="1_hhhjg"]
+[ext_resource type="PackedScene" uid="uid://ct7rcqnv2qr10" path="res://voltage_source.tscn" id="2_brbkc"]
+[ext_resource type="PackedScene" uid="uid://ce82m1d47j5nd" path="res://component_area.tscn" id="3_q3k54"]
+[ext_resource type="Texture2D" uid="uid://js8iocwc0tm2" path="res://circuit_art/circle.png" id="4_w3n07"]
+
+[node name="CircuitX" type="Node2D"]
+script = ExtResource("1_hhhjg")
+
+[node name="VoltageSource" parent="." instance=ExtResource("2_brbkc")]
+position = Vector2(-128, 0)
+
+[node name="ComponentArea" parent="." instance=ExtResource("3_q3k54")]
+position = Vector2(-32, -80)
+
+[node name="Wire" type="Line2D" parent="."]
+position = Vector2(-288, -184)
+points = PackedVector2Array(224, 104, 160, 104, 160, 160)
+default_color = Color(0, 0, 0, 1)
+texture_mode = 1
+
+[node name="Wire2" type="Line2D" parent="."]
+position = Vector2(-112, -176)
+points = PackedVector2Array(-16, 200, -16, 240, 168, 240, 168, 96, 112, 96)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(56, 4.76837e-07)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_w3n07")

@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=4 uid="uid://dsqq1u03bdndg"]
+
+[ext_resource type="Script" uid="uid://buprgtrm8a2d7" path="res://puzzles/puzzle_3.gd" id="1_1e32l"]
+[ext_resource type="PackedScene" uid="uid://ggyu47vbxevt" path="res://circuits/circuit_3.tscn" id="2_3y5yl"]
+[ext_resource type="PackedScene" uid="uid://f5njeav0vr0k" path="res://button.tscn" id="3_rxoom"]
+[ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="4_qdft1"]
+[ext_resource type="PackedScene" uid="uid://cci5uf5ikh0rn" path="res://resistor.tscn" id="5_shym4"]
+[ext_resource type="PackedScene" uid="uid://c802a6rkdua0b" path="res://area_exit.tscn" id="6_ntma5"]
+[ext_resource type="PackedScene" uid="uid://cw6nldo3rjyyq" path="res://level/background/parallax_background.tscn" id="7_qdft1"]
+[ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://level/tileset.tres" id="8_shym4"]
+
+[node name="Puzzle3" type="Node2D"]
+script = ExtResource("1_1e32l")
+
+[node name="Circuit3" parent="." instance=ExtResource("2_3y5yl")]
+position = Vector2(832, 560)
+
+[node name="Button" parent="." instance=ExtResource("3_rxoom")]
+position = Vector2(632, 624)
+
+[node name="Player" parent="." instance=ExtResource("4_qdft1")]
+position = Vector2(536, 600)
+metadata/_edit_group_ = true
+
+[node name="ButtonTimer" type="Timer" parent="."]
+
+[node name="Resistor" parent="." instance=ExtResource("5_shym4")]
+position = Vector2(-32, 352)
+resistance_ohms = 500
+metadata/resistance_ohms = 300
+
+[node name="Resistor3" parent="." instance=ExtResource("5_shym4")]
+position = Vector2(184, 160)
+resistance_ohms = 700
+metadata/resistance_ohms = 300
+
+[node name="Resistor2" parent="." instance=ExtResource("5_shym4")]
+position = Vector2(1264, 608)
+resistance_ohms = 1000
+metadata/resistance_ohms = 300
+
+[node name="AreaExit" parent="." instance=ExtResource("6_ntma5")]
+position = Vector2(976, 560)
+monitoring = false
+
+[node name="IntroText" type="RichTextLabel" parent="."]
+offset_left = 424.0
+offset_top = 464.0
+offset_right = 720.0
+offset_bottom = 576.0
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Your next challenge is to deliver a higher voltage to the portal (hint: voltage = current × resistance, or V=IR)"
+
+[node name="ExitText" type="RichTextLabel" parent="."]
+offset_left = 1016.0
+offset_top = 512.0
+offset_right = 1296.0
+offset_bottom = 592.0
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Nice work! Explanation: since V=IR, the output resistance must be the higher of the two resistors."
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("7_qdft1")]
+
+[node name="Layer0" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD9/woAAAAAAAEAAAD9/wsAAAAAAAEAAAD+/wsAAAAAAAEAAAD+/woAAAAAAAEAAAD//wsAAAAAAAEAAAD//woAAAAAAAEAAAAAAAsAAAAAAAEAAAAAAAoAAAAAAAEAAAABAAsAAAAAAAEAAAABAAoAAAAAAAEAAAACAAsAAAAAAAEAAAACAAoAAAAAAAEAAAADAAoAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAoAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAoAAAAAAAEAAAAFAAsAAAAAAAEAAAAGAAsAAAAAAAEAAAAGAAoAAAACAAMAAAAHAAsAAAAAAAEAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAEAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAEAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAKAAsAAAAAAAEAAAALAAsAAAAAAAEAAAAMAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAARAAsAAAAAAAEAAAASAAsAAAAAAAEAAAATAAsAAAAAAAEAAAAUAAsAAAAAAAEAAAAVAAsAAAAAAAEAAAAVAAwAAAAAAAEAAAAUAAwAAAAAAAEAAAATAAwAAAAAAAEAAAASAAwAAAAAAAEAAAARAAwAAAAAAAEAAAAQAAwAAAAAAAEAAAAPAAwAAAAAAAEAAAAOAAwAAAAAAAEAAAANAAwAAAAAAAEAAAAMAAwAAAAAAAEAAAALAAwAAAAAAAEAAAAKAAwAAAAAAAEAAAAJAAwAAAAAAAEAAAAIAAwAAAAAAAEAAAAHAAwAAAAAAAEAAAAGAAwAAAAAAAEAAAAFAAwAAAAAAAEAAAAEAAwAAAAAAAEAAAADAAwAAAAAAAEAAAACAAwAAAAAAAEAAAABAAwAAAAAAAEAAAAAAAwAAAAAAAEAAAD//wwAAAAAAAEAAAD+/wwAAAAAAAEAAAD9/wwAAAAAAAEAAAD9/wkAAAAAAAEAAAD9/wgAAAAAAAEAAAD9/wcAAAAAAAEAAAD9/wYAAAABAAIAAAD9/wUAAAABAAEAAAD9/wQAAAABAAEAAAD9/wMAAAABAAEAAAD9/wIAAAABAAEAAAD9/wEAAAABAAEAAAD9/wAAAAABAAEAAAD9////AAABAAAAAAAVAAkAAAABAAEAABAVAAgAAAABAAEAABAVAAcAAAABAAEAABAVAAYAAAABAAEAABAVAAUAAAABAAEAABAVAAQAAAABAAEAABAVAAMAAAABAAEAABAVAAIAAAABAAEAABAVAAEAAAABAAEAABAVAAAAAAABAAEAABAVAP//AAABAAAAABAGAAkAAAACAAIAAAAFAAkAAAACAAMAAAAEAAgAAAACAAMAAAADAAcAAAACAAMAAAAEAAcAAAACAAIAAAAFAAgAAAACAAIAAAADAAYAAAACAAIAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAD//wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD+/wcAAAAAAAEAAAD//wcAAAAAAAEAAAAAAAcAAAAAAAEAAAABAAcAAAAAAAEAAAACAAcAAAAAAAEAAAACAAgAAAAAAAEAAAADAAgAAAAAAAEAAAABAAgAAAAAAAEAAAAAAAgAAAAAAAEAAAD//wgAAAAAAAEAAAD+/wgAAAAAAAEAAAD+/wkAAAAAAAEAAAD//wkAAAAAAAEAAAAAAAkAAAAAAAEAAAABAAkAAAAAAAEAAAACAAkAAAAAAAEAAAADAAkAAAAAAAEAAAAEAAkAAAAAAAEAAAACAAMAAAACAAAAAAADAAMAAAACAAAAAAAEAAMAAAADAAAAAAABAAMAAAADAAAAABA=")
+tile_set = ExtResource("8_shym4")
+rendering_quadrant_size = 32
+
+[connection signal="resistor_interact" from="." to="." method="_on_resistor_interact"]
+[connection signal="body_entered" from="Button" to="." method="_on_button_body_entered"]
+[connection signal="body_exited" from="Button" to="." method="_on_button_body_exited"]
+[connection signal="timeout" from="ButtonTimer" to="." method="_on_button_timer_timeout"]
+[connection signal="body_entered" from="AreaExit" to="." method="_on_area_exit_body_entered"]
+[connection signal="body_exited" from="AreaExit" to="." method="_on_area_exit_body_exited"]
+
+[editable path="Player"]

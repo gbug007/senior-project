@@ -1,0 +1,14 @@
+Sprite2D
+RichTextLabel
+AnimatedSprite2D
+Node2D
+ColorRect
+Button
+VBoxContainer
+MarginContainer
+HBoxContainer
+Node
+TextEdit
+CollisionShape2D
+Area2D
+PinJoint2D
